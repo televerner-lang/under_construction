@@ -1,10 +1,15 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/*.js", "/*.css"]
+    "exclude": ["/assets/*", "/*.js", "/*.css", "/*.mjs"]
   },
   "mimeTypes": {
     ".js": "application/javascript",
-    ".mjs": "application/javascript"
+    ".mjs": "application/javascript",
+    ".wasm": "application/wasm"
+  },
+  "responseOverrides": {
+    "400": "/index.html",
+    "404": "/index.html"
   }
 }
