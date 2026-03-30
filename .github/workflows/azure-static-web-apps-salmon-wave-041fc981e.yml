@@ -19,6 +19,17 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.4.1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -27,10 +38,10 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          app_location: "/client"
+          app_location: "/"
           api_location: ""
           output_location: "dist/public"
-          app_build_command: "npm run build"
+          app_build_command: "pnpm run build"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
