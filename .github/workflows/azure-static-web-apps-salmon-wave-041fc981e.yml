@@ -27,7 +27,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          app_location: "/"
+          app_location: "/client"
           api_location: ""
           output_location: "dist/public"
           app_build_command: "npm run build"
